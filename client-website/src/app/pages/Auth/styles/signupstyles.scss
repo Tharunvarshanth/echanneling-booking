@@ -1,0 +1,40 @@
+
+
+  Container{
+    Card{
+       CardBody{
+         Row{
+           Col{
+             span{
+               .category {
+                 b {
+                   color: white;
+                 }
+               }
+             }
+           }
+         }
+         .buttonrow{
+           margin-top: 55px;
+           padding: 20px;
+         }
+         Row{
+           Col{
+             Button{
+               color: white;
+             }
+           }
+         }
+       }
+      }
+    }
+
+
+.signupbody{
+  margin-top: 15%;
+ .error{
+   color: #e94747;
+ }
+}
+
+
