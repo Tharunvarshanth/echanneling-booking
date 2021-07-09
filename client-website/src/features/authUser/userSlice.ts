@@ -1,9 +1,7 @@
 import {
     createSlice,
-    createAsyncThunk,
-    createEntityAdapter,
 } from '@reduxjs/toolkit'
-import axios from "axios";
+
 import {loginbyUsername, loginUser, registerUser} from "./userApi";
 import {setlocalstorage} from "../../app/apiService/sharedService";
 

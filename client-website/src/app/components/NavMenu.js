@@ -23,6 +23,7 @@ import {updatestates} from "../../features/authUser/userSlice";
 export const NavMenu =()=> {
         const auth = useSelector(state => state.user.auth)
         let dispatch = useDispatch()
+        console.log("auth")
         console.log(auth)
         const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
         const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -106,7 +107,7 @@ export const NavMenu =()=> {
                                                             </NavLink>
                                                     </NavItem>
                                                     <NavItem>
-                                                            <NavLink className="navbartext" href={PROFILE}>
+                                                            <NavLink hidden={!auth} className="navbartext" href={PROFILE}>
                                                                     Profile
                                                             </NavLink>
                                                     </NavItem>
@@ -120,7 +121,7 @@ export const NavMenu =()=> {
                                                                     SignUp
                                                             </NavLink>
                                                     </NavItem>
-                                                    <NavItem id="logout" >
+                                                    <NavItem hidden={!auth} id="logout" >
                                                             <NavLink className="navbartext" href="" onKeyPress={logout} onClick={logout} >
                                                                     Logout
                                                             </NavLink>

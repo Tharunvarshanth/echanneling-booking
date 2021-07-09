@@ -56,6 +56,13 @@ const validate =  values => {
     }
     return errors;
 }
+
+var styles ={
+    warning:{
+        display : "none"
+    }
+}
+
 function Signup(){
     const [firstFocus, setFirstFocus] = React.useState(false);
     const [lastFocus, setLastFocus] = React.useState(false);
@@ -81,6 +88,7 @@ function Signup(){
 
 
         } catch (err) {
+            document.getElementById("warning").style.display="block"
             console.error('Failed to save the post: ', err)
         } finally {
             setAddRequestStatus('idle')
@@ -105,6 +113,9 @@ function Signup(){
 
         <Container className="signupbody col-10">
             <Row>
+                <div style={styles.warning} className="bg-warning" id="warning">
+                    <span>Password / Email is Incorrect</span>
+                </div>
                 <Card className="card-signup " data-background-color="blue">
                     <Form action="" className="form" onSubmit={formik.handleSubmit} method="">
                         <CardHeader className="text-center">

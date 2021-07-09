@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {loginbyUsername} from "../../../features/authUser/userApi";
 import {getusernamefromtoken} from "../../apiService/sharedService";
-import ProfileView from "../Profile/ProfileView";
 import {useParams} from 'react-router-dom'
 import BookView from "./BookView";
 
@@ -10,7 +9,7 @@ import BookView from "./BookView";
 
 function BookContainer(){
     const dispatch = useDispatch();
-    const { id,tdid } = useParams()
+
 
     const status = useSelector(state => state.user.status)
     const error = useSelector(state => state.user.error)

@@ -13,6 +13,7 @@ export const registerUser = createAsyncThunk('user/register',async(initialUser)=
 })
 
 export const loginUser = createAsyncThunk('user/login',async(initialUser)=>{
+    console.log("loginuser")
     console.log(initialUser)
     const response = await axios.post(APIURL+'login',initialUser)
     return response.data

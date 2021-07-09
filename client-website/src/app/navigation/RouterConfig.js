@@ -1,5 +1,5 @@
-import {Switch,Redirect,Route} from 'react-router-dom'
-import {DASHBOARD, LOGIN, ROOT, SIGNUP, PROFILE, DETAILVIEWDASHBOARD, TIMETABLEDETAIL, BOOK} from "./CONSTANTS";
+import {Switch,Redirect} from 'react-router-dom'
+import {DASHBOARD, LOGIN, ROOT, SIGNUP, PROFILE, DETAILVIEWDASHBOARD, BOOK} from "./CONSTANTS";
 import Home from "../pages/Home";
 import Login from "../pages/Auth/Login";
 import Signup from "../pages/Auth/SignUp";

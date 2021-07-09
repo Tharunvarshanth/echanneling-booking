@@ -16,7 +16,7 @@ import {
 
 import React, {useState} from "react";
 import './styles/loginstyles.scss';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom'
 import {useFormik} from "formik";
 import {loginUser} from "../../../features/authUser/userApi";
@@ -30,7 +30,6 @@ import {getIsLoggedIn} from "../../apiService/sharedService";
 const initialValues = {
     username:'',
     password:'',
-
 }
 
 
@@ -46,13 +45,19 @@ const validate =  values => {
     return errors;
 }
 
+var styles ={
+    warning:{
+        display : "none"
+    }
+}
+
 function Login(){
     const [firstFocus, setFirstFocus] = React.useState(false);
     const [lastFocus, setLastFocus] = React.useState(false);
     const [addRequestStatus, setAddRequestStatus] = useState('idle')
     let history = useHistory()
 
-    const status= useSelector(state => state.user.token);
+
 
 
 
@@ -65,18 +70,19 @@ function Login(){
 
 
     async function onSubmit(values){
-    console.log("n")
+
         try {
             setAddRequestStatus('pending')
             const resultAction = await dispatch(
                 loginUser({ Username:formik.values.username, Password:formik.values.password})
             )
-            console.log(resultAction)
+            console.log('resultAction',resultAction)
 
             unwrapResult(resultAction)
             history.push(DASHBOARD);
         } catch (err) {
             console.error('Failed to log: ', err)
+            document.getElementById("warning").style.display="block"
         } finally {
             setAddRequestStatus('idle')
             console.log('finally')
@@ -95,6 +101,9 @@ function Login(){
                 <Container className="loginbody col-6">
 
                     <Row>
+                        <div style={styles.warning} className="bg-warning" id="warning">
+                            <span>Password / Email is Incorrect</span>
+                        </div>
                         <Card className="card-signup " data-background-color="blue">
                             <Form action="" className="form" method="" onSubmit={formik.handleSubmit}>
                                 <CardHeader className="text-center">
@@ -118,7 +127,10 @@ function Login(){
                                             name="username"
                                             type="text"
                                             onFocus={() => setFirstFocus(true)}
-                                            onBlur={() => setFirstFocus(false)}
+                                            onBlur={() =>
+
+                                                setFirstFocus(false)
+                                            }
                                             onBlur ={formik.handleBlur}
                                             onChange={formik.handleChange}
                                             value={formik.values.username}
@@ -141,6 +153,7 @@ function Login(){
                                             name="password"
                                             onFocus={() => setLastFocus(true)}
                                             onBlur={() => setLastFocus(false)}
+
                                             onBlur ={formik.handleBlur}
                                             onChange={formik.handleChange}
                                             value={formik.values.password}

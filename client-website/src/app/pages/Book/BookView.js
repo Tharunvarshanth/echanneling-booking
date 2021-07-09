@@ -2,12 +2,7 @@ import {React, useEffect, useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import './styles/bookview.scss'
-import {
 
-    Container,
-
-} from "reactstrap";
-import {useFormik} from "formik";
 
 const initialValues = {
     username:'',
@@ -21,9 +16,9 @@ const initialValues = {
 
 
 function BookView(){
-    const dispatch = useDispatch();
+
     const { id,tdid } = useParams()
-    const [timeanddate,settimeanddate] = useState({})
+
     const username = useSelector(state => state.user.Username)
     const displayname  = useSelector(state => state.user.Displayname)
 

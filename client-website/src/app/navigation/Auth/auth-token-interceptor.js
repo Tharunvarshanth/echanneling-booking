@@ -1,6 +1,4 @@
-import {tokenProvider} from 'axios-token-interceptor'
-import axios from "axios";
-import {gettoken, userkey} from "../../apiService/sharedService";
+import {gettoken} from "../../apiService/sharedService";
 
 
 
